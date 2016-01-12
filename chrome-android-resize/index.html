@@ -13,10 +13,10 @@
     </style>
     <script>
       window.addEventListener('resize', function () {
-        body.className = 'flash';
-        var a = body.scrollHeight;  //repaint with the class in
-        body.className = '';
-        var a = body.scrollHeight;  //repaint with the class out
+        document.body.className = 'flash';
+        var a = document.body.scrollHeight;  //repaint with the class in
+        document.body.className = '';
+        var a = document.body.scrollHeight;  //repaint with the class out
       });
     </script>
   </head>
