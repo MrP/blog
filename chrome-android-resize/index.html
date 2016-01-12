@@ -22,7 +22,7 @@
   </head>
   <body>
     <h1>Chrome on Android window resize events test page</h1>
-    <p>In Chrome on Android, the browser will fire window resize events while the browser's location bar appears or disappears.  The </p>
+    <p>In Chrome on Android, the browser will fire window resize events after the browser's location bar appears or disappears.  The page needs to scroll down a bit before this happens.</p>
     <p>Which is great.  More space!</p>
     <p>But if you use https and a self-signed or otherwise invalid certificate, Chrome will never hide the bar.</p>
     <p>Which is great too.  More security!</p>
@@ -37,5 +37,28 @@
     <h1>What does this page do, anyway?</h1>
     <p>Be long enough that it will scroll in a phone and tablet.  For some reason, the location bar only disappears after scrolling down more than a certain ammount.</p>
     <p>Every time there is a resize event, the background color of the page will change.</p>
+    <p>For those interested, and to make this page that little bit longer and make it scroll enough in my Nexus 7, here's the CSS and JavaScript that makes it do its thing:</p>
+    <code>
+      <pre>
+      body {
+        background-color: white;
+        transition: 1s;
+      }
+      .flash {
+        background-color: red;
+        transition: none;
+      }
+      </pre>
+    </code>
+    <code>
+      <pre>
+      window.addEventListener('resize', function () {
+        document.body.className = 'flash';
+        var a = document.body.scrollHeight;  //repaint with the class in
+        document.body.className = '';
+        var a = document.body.scrollHeight;  //repaint with the class out
+      });
+      </pre>
+    </code>
   </body>
 </html>
