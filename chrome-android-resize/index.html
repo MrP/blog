@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: white;
+        transition: 1s;
+      }
+      .flash {
+        background-color: lightgrey;
+        transition: none;
+      }
+    </style>
+    <script>
+      window.addEventListener('resize', function () {
+        body.className = 'flash';
+        var a = body.scrollHeight;  //repaint with the class in
+        body.className = '';
+        var a = body.scrollHeight;  //repaint with the class out
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Chrome on Android window resize events test page</h1>
+    <p>In Chrome on Android, the browser will fire window resize events while the browser's location bar appears or disappears.  The </p>
+    <p>Which is great.  More space!</p>
+    <p>But if you use https and a self-signed or otherwise invalid certificate, Chrome will never hide the bar.</p>
+    <p>Which is great too.  More security!</p>
+    <h1>Why is this a problem?</h1>
+    <p>Because it is very common to use self-signed certificates during development and/or testing, and use a proper certificate in production.</p>
+    <p>Your production and testing environments are different!  Uh-oh.</p>
+    <ul><li>Did you measure the size of the window adn use it in some media query? The actual size may change.</li>
+    <li>Do you react to resize events for anything? Like, trying to detect screen orientation change?  Did you take into consideration that there may be resize events unrelated to orientation changes?</li>
+    </ul>
+    <h1>So what do we do?</h1>
+    <p>Not much you can do, except being aware of it and code your site properly.  This is the browser behaving as it should.</p>
+    <h1>What does this page do, anyway?</h1>
+    <p>Be long enough that it will scroll in a phone and tablet.  For some reason, the location bar only disappears after scrolling down more than a certain ammount.</p>
+    <p>Every time there is a resize event, the background color of the page will change.</p>
+  </body>
+</html>
